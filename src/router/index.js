@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from 'vue';
+import Router from 'vue-router';
 
-Vue.use(Router)
+Vue.use(Router);
 
 /* Layout */
-import Layout from '@/layout'
+import Layout from '@/layout';
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -47,12 +47,14 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: () => import('@/views/dashboard/index'),
+        meta: { title: 'Dashboard', icon: 'dashboard' }
+      }
+    ]
   },
 
   {
@@ -120,13 +122,15 @@ export const constantRoutes = [
             children: [
               {
                 path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
+                component: () =>
+                  import('@/views/nested/menu1/menu1-2/menu1-2-1'),
                 name: 'Menu1-2-1',
                 meta: { title: 'Menu1-2-1' }
               },
               {
                 path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
+                component: () =>
+                  import('@/views/nested/menu1/menu1-2/menu1-2-2'),
                 name: 'Menu1-2-2',
                 meta: { title: 'Menu1-2-2' }
               }
@@ -148,14 +152,78 @@ export const constantRoutes = [
       }
     ]
   },
-
   {
-    path: 'external-link',
+    path: '/icons',
     component: Layout,
+    redirect: '/icons/index',
+    alwaysShow: true,
+    meta: {
+      title: 'Icons',
+      icon: 'el-icon-s-opportunity',
+      affix: true
+    },
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'index',
+        component: () => import('@/views/icons/index'),
+        name: 'Icons',
+        meta: {
+          title: 'Icons',
+          icon: 'el-icon-s-opportunity',
+          noCache: true,
+          breadcrumb: true,
+          affix: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/list',
+    component: Layout,
+    redirect: '/list/index',
+    alwaysShow: true,
+    meta: {
+      title: 'List',
+      icon: 'el-address-book',
+      affix: true
+    },
+    children: [
+      {
+        path: 'list',
+        component: () => import('@/views/list/index'),
+        name: 'List',
+        meta: {
+          title: 'Icons',
+          icon: 'el-address-book',
+          noCache: true,
+          breadcrumb: true,
+          affix: true
+        }
+      }
+    ]
+  },
+  {
+    path: '/echarts',
+    component: Layout,
+    redirect: '/echarts/index',
+    alwaysShow: true,
+    meta: {
+      title: 'Echarts',
+      icon: 'el-address-book',
+      affix: true
+    },
+    children: [
+      {
+        path: 'echarts',
+        component: () => import('@/views/echarts/index'),
+        name: 'LineChart',
+        meta: {
+          title: 'Echarts',
+          icon: 'el-address-book',
+          noCache: true,
+          breadcrumb: true,
+          affix: true
+        }
       }
     ]
   },
@@ -164,18 +232,30 @@ export const constantRoutes = [
   { path: '*', redirect: '/404', hidden: true }
 ]
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+// export const asyncRoutes = [
+//   {
+//     path: '/icons',
+//     component: Layout,
+//     redirect: '/icons/index',
+//     hidden: true, // 不在侧边栏显示
+//     alwaysShow: true,
+//     meta: { roles: ['admin', 'editor'] }
+//   }
+// ]
 
-const router = createRouter()
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  });
+
+const router = createRouter();
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher; // reset router
 }
 
-export default router
+export default router;
