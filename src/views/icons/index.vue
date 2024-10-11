@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-row style="display: flex" class="top_container">
+    <el-row style="display: flex" class="top_container" :span="8">
       <el-button-group style="padding-left: 10px">
         <el-button
           icon="el-icon-circle-plus-outline"
@@ -161,9 +161,9 @@
       </el-col>
       <el-col><TabRight /></el-col>
     </el-row>
-    <rl-row class="bottom_container">
+    <el-row class="bottom_container">
       <TabBottom />
-    </rl-row>
+    </el-row>
   </div>
 </template>
 
@@ -218,6 +218,7 @@ export default {
 
 <style scoped lang="scss">
 .app-container {
+  width: 100%;
   .top_container {
     .unknown {
       margin-left: 10px;

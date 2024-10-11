@@ -22,14 +22,14 @@ export default {
       const myChart = echarts.init(document.getElementById('chart'))
 
       myChart.setOption({
-        backgroundColor: '#394056',
+        // backgroundColor: '#394056',
         title: {
           top: 20,
           text: 'ABC类客数量统计',
           textStyle: {
             fontWeight: 'normal',
             fontSize: 16,
-            color: '#F1F1F3'
+            color: 'black'
           },
           left: '1%'
         },
@@ -42,23 +42,23 @@ export default {
           }
         },
         legend: {
-          top: 20,
-          icon: 'rect',
+          bottom: 0,
+          icon: 'circle',
           itemWidth: 14,
           itemHeight: 5,
           itemGap: 13,
           data: ['A客', 'B客', 'C客'],
-          right: '4%',
+          right: '40%',
           textStyle: {
             fontSize: 12,
-            color: '#F1F1F3'
+            color: 'black'
           }
         },
         grid: {
-          top: 100,
+          top: 60,
           left: '2%',
           right: '2%',
-          bottom: '2%',
+          bottom: '10%',
           containLabel: true
         },
         xAxis: [{
@@ -66,7 +66,7 @@ export default {
           boundaryGap: false,
           axisLine: {
             lineStyle: {
-              color: '#57617B'
+              // color: '#57617B'
             }
           },
           data: ['2024年03月', '2024年04月', '2024年05月', '2024年06月', '2024年07月', '2024年08月']
@@ -78,7 +78,7 @@ export default {
           },
           axisLine: {
             lineStyle: {
-              color: '#57617B'
+              // color: '#57617B'
             }
           },
           axisLabel: {
@@ -89,7 +89,7 @@ export default {
           },
           splitLine: {
             lineStyle: {
-              color: '#57617B'
+              // color: '#57617B'
             }
           }
         }],
